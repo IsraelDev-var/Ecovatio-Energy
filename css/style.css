@@ -393,7 +393,7 @@ html.js .reveal.in { animation: rise .7s ease both; opacity: 1; }
 .carousel__slide {
     flex: 0 0 100%;
     position: relative;
-    height: 560px;
+    height: 760px;
     background: var(--brand);
 }
 
