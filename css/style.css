@@ -1003,3 +1003,117 @@ html.js .reveal.in { animation: rise .7s ease both; opacity: 1; }
     html { scroll-behavior: auto; }
     .reveal, .reveal.in { opacity: 1; transform: none; animation: none; }
 }
+
+
+/* ---------- Iconos SVG ---------- */
+.icon-sprite { display: none; }
+
+.icon {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: block;
+}
+
+/* ---------- Proceso: tarjetas mejoradas ---------- */
+.step-card { position: relative; overflow: hidden; transition: transform .3s, box-shadow .3s, border-color .3s; }
+
+.step-card::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .45s cubic-bezier(.22, .9, .3, 1);
+}
+
+.step-card:hover::after { transform: scaleX(1); }
+.step-card:hover { border-color: rgba(103, 182, 96, .42); }
+
+.step-card__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.step-card__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: rgba(103, 182, 96, .14);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    transition: background .3s, color .3s, transform .4s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.step-card:hover .step-card__icon {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-3px) rotate(-8deg) scale(1.07);
+}
+
+.step-card__num {
+    margin-bottom: 0;
+    font-size: 20px;
+    opacity: .32;
+    transition: opacity .3s;
+}
+
+.step-card:hover .step-card__num { opacity: 1; }
+
+/* ---------- Servicios: tarjetas mejoradas ---------- */
+.service-card { position: relative; overflow: hidden; }
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(103, 182, 96, .2), transparent 70%);
+    opacity: 0;
+    transform: scale(.5);
+    transition: opacity .35s, transform .5s cubic-bezier(.22, .9, .3, 1);
+    pointer-events: none;
+}
+
+.service-card:hover::before { opacity: 1; transform: scale(1); }
+
+.service-card__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    position: relative;
+    z-index: 1;
+    transition: background .3s, color .3s, transform .4s cubic-bezier(.34, 1.56, .64, 1);
+    color: var(--accent);
+}
+
+.service-card:hover .service-card__icon {
+    background: var(--accent);
+    color: #fff;
+    transform: rotate(-8deg) scale(1.08);
+}
+
+.service-card__title,
+.service-card__desc { position: relative; z-index: 1; }
+.service-card__title { transition: color .25s; }
+.service-card:hover .service-card__title { color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+    .step-card, .step-card__icon, .service-card__icon, .service-card::before { transition: none; }
+    .step-card:hover .step-card__icon,
+    .service-card:hover .service-card__icon { transform: none; }
+    .step-card::after { transition: none; }
+}
