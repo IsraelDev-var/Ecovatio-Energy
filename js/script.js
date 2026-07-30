@@ -42,34 +42,70 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    /* ---------- Carrusel de sistemas ---------- */
+       /* ---------- Carrusel de sistemas ---------- */
     var track = document.getElementById('car-track');
 
     if (track) {
+        var carousel = track.closest('.carousel');
         var slides = track.children.length;
         var dotsWrap = document.getElementById('car-dots');
         var index = 0;
+        var timer = null;
+        var DELAY = 6000;   // ms entre slides (si lo cambias, ajusta el CSS del dot)
 
         for (var i = 0; i < slides; i++) {
             var dot = document.createElement('button');
             dot.className = 'carousel__dot';
             dot.setAttribute('aria-label', 'Ir al sistema ' + (i + 1));
             dot.dataset.index = i;
-            dot.addEventListener('click', function () { goTo(Number(this.dataset.index)); });
+            dot.addEventListener('click', function () { goTo(Number(this.dataset.index), true); });
             dotsWrap.appendChild(dot);
         }
 
-        function goTo(n) {
+        function goTo(n, manual) {
             index = (n + slides) % slides;
             track.style.transform = 'translateX(-' + (index * 100) + '%)';
             dotsWrap.querySelectorAll('.carousel__dot').forEach(function (d, di) {
                 d.classList.toggle('active', di === index);
             });
+            if (manual) restart();
         }
 
-        document.getElementById('car-prev').addEventListener('click', function () { goTo(index - 1); });
-        document.getElementById('car-next').addEventListener('click', function () { goTo(index + 1); });
+        function play() {
+            if (!timer && slides > 1) {
+                timer = setInterval(function () { goTo(index + 1); }, DELAY);
+            }
+        }
+        function stop() { clearInterval(timer); timer = null; }
+        function restart() { stop(); play(); }
+
+        document.getElementById('car-prev').addEventListener('click', function () { goTo(index - 1, true); });
+        document.getElementById('car-next').addEventListener('click', function () { goTo(index + 1, true); });
+
+        // pausa con el mouse encima y cuando la pestaña no está visible
+        carousel.addEventListener('mouseenter', stop);
+        carousel.addEventListener('mouseleave', play);
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) { stop(); } else { play(); }
+        });
+
+        // swipe en móvil
+        var touchX = null;
+        carousel.addEventListener('touchstart', function (e) {
+            touchX = e.touches[0].clientX;
+            stop();
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', function (e) {
+            if (touchX === null) return;
+            var dx = e.changedTouches[0].clientX - touchX;
+            if (Math.abs(dx) > 45) { goTo(index + (dx < 0 ? 1 : -1), true); } else { play(); }
+            touchX = null;
+        });
+
         goTo(0);
+
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) play();
     }
 
     /* ---------- FAQ (acordeón) ---------- */
