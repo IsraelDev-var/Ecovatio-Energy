@@ -22,6 +22,47 @@ document.addEventListener('DOMContentLoaded', function () {
             applyTheme(next);
         });
     }
+    /* ---------- Nav que baja al hacer scroll ---------- */
+    var nav = document.querySelector('.nav--overlay');
+    var hero = document.querySelector('.hero');
+
+    if (nav) {
+        var TRIGGER_RATIO = 0.65;   // 0.65 = aparece al 65% del hero (1 = al final)
+        var trigger = 400;
+        var isFixed = false;
+        var ticking = false;
+
+        function measure() {
+            trigger = hero ? Math.max(120, hero.offsetHeight * TRIGGER_RATIO) : 400;
+        }
+
+        function checkNav() {
+            var y = window.scrollY;
+
+            if (!isFixed && y > trigger) {
+                isFixed = true;
+                nav.classList.add('nav--fixed');
+            } else if (isFixed && y < trigger - 80) {   // margen para evitar parpadeo
+                isFixed = false;
+                nav.classList.remove('nav--fixed');
+                if (navLinks && navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    burger.setAttribute('aria-expanded', 'false');
+                    burger.textContent = '☰';
+                }
+            }
+            ticking = false;
+        }
+
+        measure();
+        checkNav();
+
+        window.addEventListener('scroll', function () {
+            if (!ticking) { ticking = true; requestAnimationFrame(checkNav); }
+        }, { passive: true });
+
+        window.addEventListener('resize', function () { measure(); checkNav(); });
+    }
 
     /* ---------- Menú móvil ---------- */
     var burger = document.getElementById('nav-burger');

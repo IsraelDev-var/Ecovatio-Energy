@@ -1213,3 +1213,10 @@ html.js .reveal.in { animation: rise .7s ease both; opacity: 1; }
     .net-links line, .net-ring { animation: none; }
     .net-ring { opacity: 0; }
 }
+
+.nav--overlay { transition: padding .25s ease; }
+.nav__logo img { transition: height .25s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+    .nav.nav--fixed { animation: none; }
+}
