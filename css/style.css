@@ -1220,3 +1220,73 @@ html.js .reveal.in { animation: rise .7s ease both; opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
     .nav.nav--fixed { animation: none; }
 }
+
+/* ---------- Preloader ---------- */
+html.preloading, html.preloading body { overflow: hidden; }
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--brand);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    transition: opacity .55s ease, visibility .55s;
+}
+
+.preloader.hide { opacity: 0; visibility: hidden; }
+
+.preloader__glow {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    max-width: 90vw;
+    max-height: 90vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(103, 182, 96, .22), transparent 68%);
+    animation: preGlow 2.8s ease-in-out infinite;
+}
+
+.preloader__logo {
+    position: relative;
+    height: 74px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    animation: preRise .7s ease both;
+}
+
+.preloader__ring {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .13);
+    border-top-color: var(--accent);
+    border-right-color: var(--accent-2);
+    animation: preSpin .85s linear infinite;
+}
+
+.preloader__text {
+    position: relative;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .45);
+}
+
+@keyframes preSpin { to { transform: rotate(360deg); } }
+@keyframes preGlow { 0%, 100% { opacity: .5; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.06); } }
+@keyframes preRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 540px) {
+    .preloader__logo { height: 58px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .preloader__glow, .preloader__logo { animation: none; }
+    .preloader__ring { animation-duration: 1.6s; }
+}

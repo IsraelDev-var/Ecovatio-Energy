@@ -1,3 +1,31 @@
+/* ---------- Preloader ---------- */
+(function () {
+    var MIN_TIME = 700;    // tiempo mínimo visible (evita el parpadeo en caché)
+    var MAX_TIME = 6000;   // tope de seguridad: nunca se queda pegado
+    var start = Date.now();
+    var done = false;
+
+    function hide() {
+        if (done) return;
+        done = true;
+        document.documentElement.classList.remove('preloading');
+        var el = document.getElementById('preloader');
+        if (!el) return;
+        el.classList.add('hide');
+        setTimeout(function () { el.parentNode && el.parentNode.removeChild(el); }, 700);
+    }
+
+    function finish() {
+        setTimeout(hide, Math.max(0, MIN_TIME - (Date.now() - start)));
+    }
+
+    if (document.readyState === 'complete') { finish(); }
+    else { window.addEventListener('load', finish); }
+
+    setTimeout(hide, MAX_TIME);          // fallback
+    window.addEventListener('pageshow', function (e) { if (e.persisted) hide(); });  // volver con "atrás"
+})();
+
 document.addEventListener('DOMContentLoaded', function () {
 
     /* ---------- Tema claro / oscuro ---------- */
