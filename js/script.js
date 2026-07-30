@@ -122,11 +122,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (track) {
         var carousel = track.closest('.carousel');
-        var slides = track.children.length;
+        var slideEls = track.children;
+        var slides = slideEls.length;
         var dotsWrap = document.getElementById('car-dots');
         var index = 0;
         var timer = null;
         var DELAY = 6000;   // ms entre slides (si lo cambias, ajusta el CSS del dot)
+        var angleStep = 360 / slides;
+        var depth = 0;
+
+        // Coloca cada slide como una cara del cubo (rotada + empujada hacia afuera),
+        // y recentra el cubo (translateZ negativo) para que la cara activa quede a
+        // z=0 en vez de sobresalir hacia la cámara y verse agrandada.
+        function layoutCube() {
+            depth = Math.round(carousel.offsetWidth / 2 / Math.tan(Math.PI / slides));
+            for (var i = 0; i < slides; i++) {
+                slideEls[i].style.transform = 'rotateY(' + (i * angleStep) + 'deg) translateZ(' + depth + 'px)';
+            }
+            track.style.transform = 'translateZ(-' + depth + 'px) rotateY(-' + (index * angleStep) + 'deg)';
+        }
+        layoutCube();
+        window.addEventListener('resize', layoutCube);
 
         for (var i = 0; i < slides; i++) {
             var dot = document.createElement('button');
@@ -139,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function goTo(n, manual) {
             index = (n + slides) % slides;
-            track.style.transform = 'translateX(-' + (index * 100) + '%)';
+            track.style.transform = 'translateZ(-' + depth + 'px) rotateY(-' + (index * angleStep) + 'deg)';
             dotsWrap.querySelectorAll('.carousel__dot').forEach(function (d, di) {
                 d.classList.toggle('active', di === index);
             });

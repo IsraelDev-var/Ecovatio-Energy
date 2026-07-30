@@ -385,15 +385,20 @@ html.js .reveal.in { animation: rise .7s ease both; opacity: 1; }
 .benefit-card__title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
 .benefit-card__desc { font-size: 13.5px; line-height: 1.6; color: rgba(255, 255, 255, .62); }
 
-/* ---------- Carrusel de sistemas ---------- */
-.carousel { position: relative; overflow: hidden; }
+/* ---------- Carrusel de sistemas (cubo 3D) ---------- */
+.carousel { position: relative; overflow: hidden; perspective: 1800px; }
 
-.carousel__track { display: flex; transition: transform .6s cubic-bezier(.22, .9, .3, 1); }
-
-.carousel__slide {
-    flex: 0 0 100%;
+.carousel__track {
     position: relative;
     height: 760px;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(.22, .9, .3, 1);
+}
+
+.carousel__slide {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
     background: var(--brand);
 }
 
@@ -488,7 +493,7 @@ html.js .reveal.in { animation: rise .7s ease both; opacity: 1; }
 }
 
 @media (max-width: 860px) {
-    .carousel__slide { height: auto; min-height: 640px; }
+    .carousel__track { height: 640px; }
 
     .carousel__slide--product .carousel__img {
         inset: 0 0 auto 0;
@@ -513,6 +518,22 @@ html.js .reveal.in { animation: rise .7s ease both; opacity: 1; }
 }
 
 /* ---------- Proyectos ---------- */
+.section--towers { position: relative; overflow: hidden; }
+.section--towers > .wrap { position: relative; z-index: 1; }
+
+.towers-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    line-height: 0;
+    color: var(--accent);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.towers-bg svg { display: block; width: 100%; height: auto; }
+
 .project-card {
     position: relative;
     border-radius: 20px;
@@ -986,7 +1007,7 @@ html.js .reveal.in { animation: rise .7s ease both; opacity: 1; }
     .system-block--reverse .system-block__img { order: 0; }
     .system-block__img img { min-height: 220px; }
 
-    .carousel__slide { height: 620px; }
+    .carousel__track { height: 620px; }
     .carousel__body { left: 20px; right: 20px; bottom: 56px; }
     .footer__grid { grid-template-columns: 1fr; gap: 28px; }
     .footer__bottom { flex-direction: column; align-items: flex-start; }
