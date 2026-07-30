@@ -1117,3 +1117,99 @@ html.js .reveal.in { animation: rise .7s ease both; opacity: 1; }
     .service-card:hover .service-card__icon { transform: none; }
     .step-card::after { transition: none; }
 }
+
+
+/* ---------- Sección con mapa de red ---------- */
+.section--network { position: relative; overflow: hidden; }
+.section--network > .wrap { position: relative; z-index: 2; }
+
+.net-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.net-bg::before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 90%;
+    background: radial-gradient(ellipse at center, rgba(103, 182, 96, .16), transparent 68%);
+}
+
+.net-bg svg {
+    position: relative;
+    width: min(1180px, 112%);
+    height: auto;
+    max-height: 108%;
+}
+
+.net-land {
+    fill: rgba(103, 182, 96, .045);
+    stroke: rgba(143, 209, 137, .3);
+    stroke-width: 1.4;
+    stroke-linejoin: round;
+}
+
+/* --- líneas de conexión con flujo --- */
+.net-links line {
+    stroke: rgba(143, 209, 137, .42);
+    stroke-width: 1.2;
+    stroke-dasharray: 5 9;
+    animation: netFlow 2.6s linear infinite;
+}
+
+.net-links line:nth-child(3n)   { animation-duration: 3.4s; animation-delay: -.8s; }
+.net-links line:nth-child(3n+1) { animation-duration: 4.2s; animation-delay: -1.6s; }
+
+@keyframes netFlow { to { stroke-dashoffset: -28; } }
+
+/* --- nodos --- */
+.net-dot { fill: var(--accent-2); }
+.net-node--main .net-dot { fill: var(--accent); filter: drop-shadow(0 0 7px rgba(103, 182, 96, .9)); }
+
+.net-ring {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.4;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: netPulse 3.2s ease-out infinite;
+}
+
+.net-node:nth-child(2n) .net-ring { animation-delay: .7s; }
+.net-node:nth-child(3n) .net-ring { animation-delay: 1.5s; }
+.net-node:nth-child(5n) .net-ring { animation-delay: 2.2s; }
+
+@keyframes netPulse {
+    0%        { transform: scale(1);   opacity: .7; }
+    70%, 100% { transform: scale(3.6); opacity: 0; }
+}
+
+/* --- tarjetas legibles sobre el mapa --- */
+.section--network .benefit-card {
+    background: rgba(1, 30, 31, .42);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.section--network .benefit-card:hover {
+    background: rgba(103, 182, 96, .12);
+    border-color: rgba(103, 182, 96, .42);
+}
+
+.section-lead--light { color: rgba(255, 255, 255, .66); }
+
+@media (max-width: 900px) {
+    .net-bg svg { width: 150%; opacity: .55; }
+    .net-bg::before { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .net-links line, .net-ring { animation: none; }
+    .net-ring { opacity: 0; }
+}
