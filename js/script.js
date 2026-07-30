@@ -1,7 +1,13 @@
 /* ---------- Preloader ---------- */
 (function () {
-    var MIN_TIME = 700;    // tiempo mínimo visible (evita el parpadeo en caché)
-    var MAX_TIME = 6000;   // tope de seguridad: nunca se queda pegado
+    var seen = false;
+    try {
+        seen = !!sessionStorage.getItem('ecovatio-loaded');
+        sessionStorage.setItem('ecovatio-loaded', '1');
+    } catch (e) { /* modo privado en Safari viejo */ }
+
+    var MIN_TIME = seen ? 0 : 300;   // primera visita 300ms, luego sin espera
+    var MAX_TIME = 6000;             // tope de seguridad: nunca se queda pegado
     var start = Date.now();
     var done = false;
 
@@ -22,8 +28,8 @@
     if (document.readyState === 'complete') { finish(); }
     else { window.addEventListener('load', finish); }
 
-    setTimeout(hide, MAX_TIME);          // fallback
-    window.addEventListener('pageshow', function (e) { if (e.persisted) hide(); });  // volver con "atrás"
+    setTimeout(hide, MAX_TIME);
+    window.addEventListener('pageshow', function (e) { if (e.persisted) hide(); });
 })();
 
 document.addEventListener('DOMContentLoaded', function () {
