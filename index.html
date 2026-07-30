@@ -4,162 +4,404 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecovatio Energy | Inicio</title>
+    <title>Ecovatio Energy | Energía Solar en República Dominicana</title>
+    <meta name="description"
+        content="Diseñamos e instalamos sistemas de energía solar para hogares, empresas e industrias en República Dominicana. Solicite su cotización gratuita.">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <header>
-        <div class="container header-content">
-            <a href="index.html" class="logo">
+    <!-- ================= HERO ================= -->
+    <header id="inicio" class="hero">
+        <video class="hero__video" autoplay muted loop playsinline poster="assets/img/hero-green.png">
+            <source src="assets/img/VideoTomaDron.mp4" type="video/mp4">
+        </video>
+        <div class="hero__overlay"></div>
+
+        <nav class="nav nav--overlay">
+            <a href="index.html" class="nav__logo">
                 <img src="assets/img/logo.png" alt="Ecovatio Energy">
             </a>
+            <button class="nav__burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <div class="nav__links" id="nav-links">
+                <a href="#proceso">Proceso</a>
+                <a href="#servicios">Servicios</a>
+                <a href="pages/sistemas.html">Sistemas</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#calculadora">Calculadora</a>
+                <a href="pages/historia.html">Historia</a>
+                <button class="theme-toggle" id="theme-toggle" title="Cambiar tema" aria-label="Cambiar tema">☾</button>
+                <a href="#contacto" class="btn btn--primary btn--sm">Solicitar Cotización</a>
+            </div>
+        </nav>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="hamburger-btn" aria-label="Abrir Menú">
-                <svg viewBox="0 0 100 80" width="30" height="30" fill="var(--primary)">
-                    <rect width="100" height="15" rx="8"></rect>
-                    <rect y="30" width="100" height="15" rx="8"></rect>
-                    <rect y="60" width="100" height="15" rx="8"></rect>
-                </svg>
-            </button>
+        <div class="hero__content">
+            <div class="eyebrow eyebrow--light">Energía solar integral</div>
+            <h1 class="hero__title">Convierta la luz del sol en ahorro para toda la vida.</h1>
+            <p class="hero__text">Diseñamos e instalamos sistemas solares personalizados para hogares, empresas e
+                industrias en República Dominicana.</p>
+            <div class="hero__actions">
+                <a href="#contacto" class="btn btn--primary">Solicitar Cotización</a>
+                <a href="#calculadora" class="btn btn--ghost-light">Calcular mi Ahorro</a>
+            </div>
+        </div>
 
-            <!-- Navigation Links -->
-            <nav id="main-nav">
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active">Inicio</a></li>
-                    <li><a href="pages/historia.html">Nuestra Historia</a></li>
-                    <li><a href="pages/sistemas.html">Sistemas</a></li>
-                    <li><a href="pages/calculadora.html">Calculadora</a></li>
-                    <li><a href="#contacto" class="btn btn-primary">Contáctanos</a></li>
-                </ul>
-
-                <!-- Social Icons Header -->
-                <div class="header-socials">
-                    <a href="https://www.facebook.com/profile.php?id=61588512834788" target="_blank"
-                        aria-label="Facebook">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#1877F2">
-                            <path
-                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/ecovatioenergy" target="_blank" aria-label="Instagram">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#E1306C">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm3.98-10.405a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" />
-                        </svg>
-                    </a>
-                    <a href="https://wa.me/message/S7ORWACDSX3UG1" target="_blank" aria-label="WhatsApp">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
-                            <path
-                                d="M12.016 2.016A10 10 0 0 0 2.253 15.65L.89 20.6l5.06-1.328A9.97 9.97 0 0 0 12.017 22c5.516 0 10-4.484 10-10C22.019 6.485 17.534 2.016 12.017 2.016zm0 18.283a8.28 8.28 0 0 1-4.23-1.155l-.304-.18-3.141.825.84-3.05-.198-.316a8.287 8.287 0 1 1 15.309-4.407c0 4.57-3.715 8.283-8.276 8.283zM16.55 13.82c-.249-.126-1.472-.727-1.701-.81-.228-.084-.395-.126-.56.126-.166.252-.643.81-.788.977-.145.166-.29.186-.54.06-1.611-.806-2.583-1.352-3.6-2.784-.103-.146-.01-.225.114-.35.112-.113.249-.292.373-.437.124-.146.166-.25.248-.415.083-.166.042-.312-.02-.437-.063-.126-.56-1.353-.768-1.852-.202-.485-.407-.42-.56-.427l-.48-.008c-.166 0-.436.063-.664.312-.228.25-.871.85-.871 2.074 0 1.225.892 2.41 1.016 2.576.124.167 1.761 2.686 4.267 3.766 1.488.643 2.062.695 2.846.587.653-.09 1.471-.602 1.678-1.183.208-.58.208-1.08.146-1.183-.063-.105-.228-.168-.477-.294z" />
-                        </svg>
-                    </a>
-                </div>
-            </nav>
+        <div class="hero__stats">
+            <div><div class="stat__value">+500</div><div class="stat__label">proyectos realizados</div></div>
+            <div><div class="stat__value">98%</div><div class="stat__label">clientes satisfechos</div></div>
+            <div><div class="stat__value">15</div><div class="stat__label">años de experiencia</div></div>
+            <div><div class="stat__value stat__value--accent">90%</div><div class="stat__label">de ahorro en energía</div></div>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h1>Libertad Energética <br> <span class="highlight">Garantizada</span></h1>
-            <p>Deja de pagar facturas excesivas. Únete a la revolución solar y toma el control de tu energía con
-                Ecovatio.</p>
-            <div class="hero-btns">
-                <a href="pages/calculadora.html" class="btn btn-primary pulse">Calcular Ahorro</a>
-                <a href="pages/sistemas.html" class="btn btn-outline-light">Conoce Nuestros Sistemas</a>
+    <!-- ================= PROCESO ================= -->
+    <section id="proceso" class="section">
+        <div class="wrap">
+            <div class="eyebrow">¿Cómo trabajamos?</div>
+            <h2 class="section-title">Un proceso claro, de la inspección a la puesta en marcha.</h2>
+            <p class="section-lead">Le acompañamos en cada etapa con un equipo certificado y comunicación transparente.</p>
+            <div class="grid-4">
+                <div class="step-card reveal"><div class="step-card__num">01</div><div class="step-card__title">Levantamiento</div><div class="step-card__desc">Inspección técnica del sitio y evaluación de viabilidad.</div></div>
+                <div class="step-card reveal"><div class="step-card__num">02</div><div class="step-card__title">Evaluación del consumo</div><div class="step-card__desc">Estudio de su consumo energético real e histórico.</div></div>
+                <div class="step-card reveal"><div class="step-card__num">03</div><div class="step-card__title">Diseño del sistema</div><div class="step-card__desc">Solución personalizada según su propiedad y necesidades.</div></div>
+                <div class="step-card reveal"><div class="step-card__num">04</div><div class="step-card__title">Cotización</div><div class="step-card__desc">Propuesta clara con equipos, costos y proyección de ahorro.</div></div>
+                <div class="step-card reveal"><div class="step-card__num">05</div><div class="step-card__title">Instalación</div><div class="step-card__desc">Montaje profesional con equipos certificados y permisos.</div></div>
+                <div class="step-card reveal"><div class="step-card__num">06</div><div class="step-card__title">Puesta en marcha</div><div class="step-card__desc">Configuración, pruebas y activación del sistema.</div></div>
+                <div class="step-card reveal"><div class="step-card__num">07</div><div class="step-card__title">Monitoreo</div><div class="step-card__desc">Seguimiento de la producción en tiempo real.</div></div>
+                <div class="step-card reveal"><div class="step-card__num">08</div><div class="step-card__title">Mantenimiento</div><div class="step-card__desc">Planes preventivos y correctivos con soporte técnico.</div></div>
             </div>
         </div>
     </section>
 
-    <!-- PROBLEM SECTION (HIGH BILL) -->
-    <section class="section problem-section">
-        <div class="container">
-            <div class="problem-grid">
-                <div class="problem-text">
-                    <p class="subtitle">La Realidad</p>
-                    <h2 class="section-title text-left">¿Cansado de Facturas Eléctricas Impredecibles?</h2>
-                    <p>En República Dominicana, el costo de la electricidad sigue subiendo. Cada mes es una sorpresa
-                        desagradable que afecta tu presupuesto familiar o empresarial.</p>
-                    <p><strong>El problema no es tu consumo, es depender de la red tradicional.</strong></p>
-                    <br>
-                    <ul class="sys-features">
-                        <li>Tarifas en aumento constante</li>
-                        <li>Apagones frecuentes</li>
-                        <li>Incertidumbre mensual</li>
-                    </ul>
-                    <br>
-                    <a href="pages/calculadora.html" class="btn btn-primary">Ver Cuánto Puedo Ahorrar</a>
+    <!-- ================= SERVICIOS ================= -->
+    <section id="servicios" class="section section--alt">
+        <div class="wrap">
+            <div class="eyebrow">Servicios</div>
+            <div class="section-head-row">
+                <h2 class="section-title">Todo lo que su sistema solar necesita.</h2>
+                <a href="#contacto" class="btn btn--ghost">Hablar con un asesor →</a>
+            </div>
+            <div class="grid-5">
+                <div class="service-card reveal"><div class="service-card__icon"><span class="shape shape--circle"></span></div><div class="service-card__title">Instalación residencial</div><div class="service-card__desc">Sistemas para hogares y villas.</div></div>
+                <div class="service-card reveal"><div class="service-card__icon"><span class="shape shape--square"></span></div><div class="service-card__title">Instalación comercial</div><div class="service-card__desc">Comercios, oficinas y hoteles.</div></div>
+                <div class="service-card reveal"><div class="service-card__icon"><span class="shape shape--diamond"></span></div><div class="service-card__title">Instalación industrial</div><div class="service-card__desc">Naves y plantas de producción.</div></div>
+                <div class="service-card reveal"><div class="service-card__icon"><span class="shape shape--circle"></span></div><div class="service-card__title">Mantenimiento</div><div class="service-card__desc">Preventivo y correctivo.</div></div>
+                <div class="service-card reveal"><div class="service-card__icon"><span class="shape shape--square"></span></div><div class="service-card__title">Diagnóstico</div><div class="service-card__desc">Revisión de sistemas existentes.</div></div>
+                <div class="service-card reveal"><div class="service-card__icon"><span class="shape shape--diamond"></span></div><div class="service-card__title">Auditoría energética</div><div class="service-card__desc">Análisis de eficiencia y consumo.</div></div>
+                <div class="service-card reveal"><div class="service-card__icon"><span class="shape shape--circle"></span></div><div class="service-card__title">Sistemas híbridos</div><div class="service-card__desc">Red + baterías de respaldo.</div></div>
+                <div class="service-card reveal"><div class="service-card__icon"><span class="shape shape--square"></span></div><div class="service-card__title">Sistemas Off-Grid</div><div class="service-card__desc">Autonomía total sin red.</div></div>
+                <div class="service-card reveal"><div class="service-card__icon"><span class="shape shape--diamond"></span></div><div class="service-card__title">Sistemas On-Grid</div><div class="service-card__desc">Conectados a la red con medición.</div></div>
+                <div class="service-card reveal"><div class="service-card__icon"><span class="shape shape--circle"></span></div><div class="service-card__title">Baterías solares</div><div class="service-card__desc">Almacenamiento de energía.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= BENEFICIOS ================= -->
+    <section class="section section--dark">
+        <div class="wrap">
+            <div class="eyebrow eyebrow--light">Beneficios</div>
+            <h2 class="section-title">Energía limpia que se paga sola.</h2>
+            <div class="grid-4" style="margin-top:54px">
+                <div class="benefit-card reveal"><div class="benefit-card__dot"></div><div class="benefit-card__title">Reduce su factura eléctrica</div><div class="benefit-card__desc">Hasta un 90% menos en su pago mensual de energía.</div></div>
+                <div class="benefit-card reveal"><div class="benefit-card__dot"></div><div class="benefit-card__title">Energía limpia</div><div class="benefit-card__desc">Generación 100% renovable, sin emisiones.</div></div>
+                <div class="benefit-card reveal"><div class="benefit-card__dot"></div><div class="benefit-card__title">Aumenta el valor de su propiedad</div><div class="benefit-card__desc">Un activo que revaloriza su inmueble.</div></div>
+                <div class="benefit-card reveal"><div class="benefit-card__dot"></div><div class="benefit-card__title">Retorno de inversión</div><div class="benefit-card__desc">El sistema se paga solo en pocos años.</div></div>
+                <div class="benefit-card reveal"><div class="benefit-card__dot"></div><div class="benefit-card__title">Monitoreo en tiempo real</div><div class="benefit-card__desc">Vea su producción desde el celular.</div></div>
+                <div class="benefit-card reveal"><div class="benefit-card__dot"></div><div class="benefit-card__title">Bajo mantenimiento</div><div class="benefit-card__desc">Equipos diseñados para durar más de 25 años.</div></div>
+                <div class="benefit-card reveal"><div class="benefit-card__dot"></div><div class="benefit-card__title">Garantía de equipos</div><div class="benefit-card__desc">Paneles e inversores con garantía de fábrica.</div></div>
+                <div class="benefit-card reveal"><div class="benefit-card__dot"></div><div class="benefit-card__title">Instalación certificada</div><div class="benefit-card__desc">Técnicos acreditados y normativas vigentes.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SISTEMAS (CARRUSEL) ================= -->
+    <section id="sistemas" class="section section--alt" style="padding-left:0;padding-right:0;padding-bottom:0">
+        <div class="wrap" style="padding:0 56px 54px">
+            <div class="eyebrow">Nuestros sistemas</div>
+            <div class="section-head-row" style="margin-bottom:0">
+                <h2 class="section-title">Tecnología adaptada a sus necesidades.</h2>
+                <div class="carousel__arrows">
+                    <button class="carousel__arrow" id="car-prev" aria-label="Anterior">←</button>
+                    <button class="carousel__arrow" id="car-next" aria-label="Siguiente">→</button>
                 </div>
-                <div class="problem-img-wrapper">
-                    <img src="assets/img/high-bill-green.jpg" alt="Factura eléctrica costosa frustrando a un cliente"
-                        class="problem-img" loading="lazy">
+            </div>
+        </div>
+        <div class="carousel">
+            <div class="carousel__track" id="car-track">
+                <div class="carousel__slide">
+                    <img class="carousel__img" src="assets/img/ongrid.png" alt="Sistema de inyección a red" loading="lazy">
+                    <div class="carousel__shade"></div>
+                    <div class="carousel__body">
+                        <div class="carousel__tag">On-Grid · Inyección a red</div>
+                        <h3 class="carousel__title">Sistema de Inyección a Red</h3>
+                        <p class="carousel__desc">La solución más rentable para reducir su factura. El excedente que genera se acredita con la compañía eléctrica mediante un medidor bidireccional.</p>
+                        <div class="carousel__meta">
+                            <a href="pages/sistemas.html" class="btn btn--primary btn--sm">Ver detalle del sistema</a>
+                            <span class="carousel__spec">Medidor bidireccional · Trámite incluido</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel__slide">
+                    <img class="carousel__img" src="assets/img/hybrid.png" alt="Sistema híbrido inteligente" loading="lazy">
+                    <div class="carousel__shade"></div>
+                    <div class="carousel__body">
+                        <div class="carousel__tag">Híbrido · Red + baterías</div>
+                        <h3 class="carousel__title">Sistema Híbrido Inteligente</h3>
+                        <p class="carousel__desc">Ahorro e independencia en un solo paquete. Si se va la luz, el sistema cambia a modo batería en milisegundos. Adiós a los apagones.</p>
+                        <div class="carousel__meta">
+                            <a href="pages/sistemas.html" class="btn btn--primary btn--sm">Ver detalle del sistema</a>
+                            <span class="carousel__spec">Baterías de litio LiFePO4 de larga vida</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel__slide">
+                    <img class="carousel__img" src="assets/img/offgrid.png" alt="Sistema off-grid autónomo" loading="lazy">
+                    <div class="carousel__shade"></div>
+                    <div class="carousel__body">
+                        <div class="carousel__tag">Off-Grid · Autónomo</div>
+                        <h3 class="carousel__title">Sistema Off-Grid (Autónomo)</h3>
+                        <p class="carousel__desc">Independencia total: su propiedad se convierte en su propia planta eléctrica. Energía día y noche, donde los cables no llegan.</p>
+                        <div class="carousel__meta">
+                            <a href="pages/sistemas.html" class="btn btn--primary btn--sm">Ver detalle del sistema</a>
+                            <span class="carousel__spec">Banco de baterías + respaldo opcional</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel__dots" id="car-dots"></div>
+        </div>
+    </section>
+
+    <!-- ================= PROYECTOS ================= -->
+    <section id="proyectos" class="section">
+        <div class="wrap">
+            <div class="eyebrow">Proyectos realizados</div>
+            <h2 class="section-title">Resultados que hablan por nosotros.</h2>
+            <div class="grid-3" style="margin-top:54px">
+                <div class="project-card reveal"><img src="assets/img/hero.png" alt="Proyecto residencial en Santo Domingo" loading="lazy"><div class="project-card__shade"></div><div class="project-card__body"><div class="project-card__city">Santo Domingo</div><div class="project-card__meta">Residencial · 18 paneles · 9.9 kWp</div></div></div>
+                <div class="project-card reveal"><img src="assets/img/factory.png" alt="Proyecto industrial en Santiago" loading="lazy"><div class="project-card__shade"></div><div class="project-card__body"><div class="project-card__city">Santiago</div><div class="project-card__meta">Industrial · 210 paneles · 115 kWp</div></div></div>
+                <div class="project-card reveal"><img src="assets/img/hero-bg.png" alt="Villa con paneles en Punta Cana" loading="lazy"><div class="project-card__shade"></div><div class="project-card__body"><div class="project-card__city">Punta Cana</div><div class="project-card__meta">Residencial · 24 paneles · 13.2 kWp</div></div></div>
+                <div class="project-card reveal"><img src="assets/img/farm.png" alt="Proyecto agrícola en San Juan" loading="lazy"><div class="project-card__shade"></div><div class="project-card__body"><div class="project-card__city">San Juan</div><div class="project-card__meta">Agrícola · 96 paneles · 52.8 kWp</div></div></div>
+                <div class="project-card reveal"><img src="assets/img/worker.png" alt="Instalación comercial en La Romana" loading="lazy"><div class="project-card__shade"></div><div class="project-card__body"><div class="project-card__city">La Romana</div><div class="project-card__meta">Comercial · 48 paneles · 26.4 kWp</div></div></div>
+                <div class="project-card reveal"><img src="assets/img/injection.png" alt="Residencia en Puerto Plata" loading="lazy"><div class="project-card__shade"></div><div class="project-card__body"><div class="project-card__city">Puerto Plata</div><div class="project-card__meta">Residencial · 16 paneles · 8.8 kWp</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CALCULADORA ================= -->
+    <section id="calculadora" class="section section--alt">
+        <div class="wrap">
+            <div class="eyebrow">Calculadora de ahorro</div>
+            <h2 class="section-title">¿Cuánto podría ahorrar con energía solar?</h2>
+            <div class="calc-grid" style="margin-top:54px">
+                <div class="calc-panel">
+                    <label class="field">
+                        <span>Consumo mensual (kWh)</span>
+                        <input type="number" id="calc-kwh" value="450" min="0" inputmode="numeric">
+                    </label>
+                    <label class="field">
+                        <span>Factura mensual promedio (RD$)</span>
+                        <input type="number" id="calc-bill" value="12000" min="0" inputmode="numeric">
+                    </label>
+                    <div class="field">
+                        <span>Tipo de propiedad</span>
+                        <div class="seg" id="calc-seg">
+                            <button class="seg__btn active" data-prop="residencial">Residencial</button>
+                            <button class="seg__btn" data-prop="comercial">Comercial</button>
+                            <button class="seg__btn" data-prop="industrial">Industrial</button>
+                        </div>
+                    </div>
+                    <div class="calc-note">* Estimación referencial. La cifra final depende del estudio de consumo y la inspección técnica.</div>
+                </div>
+                <div class="calc-results">
+                    <div class="calc-results__grid">
+                        <div class="res-box"><div class="res-box__label">Ahorro mensual</div><div class="res-box__value" id="calc-monthly">RD$ 0</div></div>
+                        <div class="res-box"><div class="res-box__label">Ahorro anual</div><div class="res-box__value" id="calc-yearly">RD$ 0</div></div>
+                        <div class="res-box res-box--wide">
+                            <div class="res-box__row"><span class="res-box__label" style="margin:0">Retorno de inversión estimado</span><span class="res-box__value res-box__value--white" id="calc-roi">—</span></div>
+                            <div class="roi-bar"><div class="roi-bar__fill" id="calc-roi-bar"></div></div>
+                            <div class="roi-scale"><span>0 años</span><span>10 años</span></div>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="btn btn--primary btn--block">Solicitar estudio gratuito</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ADVANTAGES -->
-    <section class="section advantages">
-        <div class="container">
-            <h2 class="section-title">¿Por Qué Ecovatio?</h2>
-            <div class="adv-grid">
-                <div class="adv-card">
-                    <div class="adv-icon">💰</div>
-                    <h3>Retorno Inmediato</h3>
-                    <p>Tu sistema se paga solo con el ahorro mensual de tu factura.</p>
+    <!-- ================= TESTIMONIOS ================= -->
+    <section class="section">
+        <div class="wrap">
+            <div class="eyebrow">Testimonios</div>
+            <h2 class="section-title">Clientes que ya generan su propia energía.</h2>
+            <div class="grid-3" style="margin-top:54px">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-card__stars">★★★★★</div>
+                    <div class="testimonial-card__quote">"Desde la instalación mi factura bajó de forma notable y el proceso fue rápido y ordenado. El equipo respondió todas mis preguntas."</div>
+                    <div class="testimonial-card__person"><div class="testimonial-card__avatar">JR</div><div><div class="testimonial-card__name">J. Rodríguez</div><div class="testimonial-card__role">Residencial · Santo Domingo</div></div></div>
                 </div>
-                <div class="adv-card">
-                    <div class="adv-icon">🛡️</div>
-                    <h3>Garantía Real</h3>
-                    <p>Equipos de alta gama diseñados para resistir nuestro clima tropical.</p>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-card__stars">★★★★★</div>
+                    <div class="testimonial-card__quote">"Para nuestro comercio la energía era un gasto enorme. Hoy producimos gran parte de lo que consumimos y lo monitoreamos desde el celular."</div>
+                    <div class="testimonial-card__person"><div class="testimonial-card__avatar">MP</div><div><div class="testimonial-card__name">M. Peralta</div><div class="testimonial-card__role">Comercial · Santiago</div></div></div>
                 </div>
-                <div class="adv-card">
-                    <div class="adv-icon">🌱</div>
-                    <h3>Futuro Verde</h3>
-                    <p>Cada panel instalado reduce toneladas de CO2. Sé parte de la solución.</p>
-                </div>
-                <div class="adv-card">
-                    <div class="adv-icon">🏠</div>
-                    <h3>Valor Inmobiliario</h3>
-                    <p>Tu propiedad aumenta de valor instantáneamente al ser energéticamente eficiente.</p>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-card__stars">★★★★★</div>
+                    <div class="testimonial-card__quote">"Instalación profesional y puntual. Con las baterías ya no nos afectan los apagones y el retorno va mejor de lo proyectado."</div>
+                    <div class="testimonial-card__person"><div class="testimonial-card__avatar">AG</div><div><div class="testimonial-card__name">A. García</div><div class="testimonial-card__role">Industrial · San Pedro</div></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT (Simple Footer) -->
-    <section id="contacto" class="section contact">
-        <div class="container contact-wrapper">
-            <div class="contact-info">
-                <h3>Empieza Hoy</h3>
-                <p>Escríbenos para una asesoría gratuita.</p>
-                <div style="margin-top:20px;">
-                    <p><strong>📞</strong> (809) 569-7499</p>
-                    <p><strong>📧</strong> Servicios@ecovatioenergy.com</p>
+    <!-- ================= FAQ ================= -->
+    <section id="faq" class="section section--alt">
+        <div class="wrap">
+            <div class="eyebrow" style="text-align:center">Preguntas frecuentes</div>
+            <h2 class="section-title section-title--center" style="margin-bottom:48px">Resolvemos sus dudas.</h2>
+            <div class="faq-list">
+                <div class="faq-item open">
+                    <button class="faq-item__q"><span>¿Cuánto dura la instalación?</span><span class="faq-item__icon">+</span></button>
+                    <div class="faq-item__a">Una instalación residencial típica toma de 2 a 5 días laborables una vez aprobados los permisos. Proyectos comerciales e industriales varían según la escala.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-item__q"><span>¿Qué garantía ofrecen?</span><span class="faq-item__icon">+</span></button>
+                    <div class="faq-item__a">Los paneles cuentan con garantía de fábrica de hasta 25 años de producción, los inversores de 10 a 12 años, y nuestra mano de obra está garantizada por escrito.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-item__q"><span>¿Los paneles funcionan cuando está nublado?</span><span class="faq-item__icon">+</span></button>
+                    <div class="faq-item__a">Sí. La producción disminuye en días nublados, pero el sistema sigue generando energía. El diseño contempla el promedio de radiación anual de su zona.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-item__q"><span>¿Necesito baterías?</span><span class="faq-item__icon">+</span></button>
+                    <div class="faq-item__a">No necesariamente. Un sistema on-grid funciona sin baterías. Las recomendamos si desea respaldo ante apagones o vive en zona sin red estable.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-item__q"><span>¿Cuánto puedo ahorrar?</span><span class="faq-item__icon">+</span></button>
+                    <div class="faq-item__a">Dependiendo de su consumo y tipo de propiedad, entre un 60% y un 90% de su factura eléctrica. Use nuestra calculadora para una estimación inicial.</div>
                 </div>
             </div>
-            <!-- Mensaje de estado oculto por defecto -->
-            <div id="form-status" class="form-status-msg hidden">
-                ✓ Datos recibidos exitosamente. Te contactaremos pronto.
-            </div>
-
-            <form id="contact-form" action="https://formspree.io/f/mykdnndz" method="POST">
-                <input type="text" name="nombre" placeholder="Nombre" required>
-                <input type="tel" name="telefono" placeholder="Teléfono" required>
-                <button type="submit" class="btn btn-primary">Solicitar Llamada</button>
-            </form>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Ecovatio Energy. Innovación Sostenible.</p>
+    <!-- ================= CONTACTO ================= -->
+    <section id="contacto" class="section">
+        <div class="wrap">
+            <div class="eyebrow">Contacto</div>
+            <h2 class="section-title">Empiece a ahorrar hoy mismo.</h2>
+            <div class="contact-grid" style="margin-top:54px">
+                <form id="contact-form" class="contact-form" action="https://formspree.io/f/mykdnndz" method="POST">
+                    <div class="contact-form__grid">
+                        <label class="field"><span>Nombre</span><input type="text" name="nombre" placeholder="Su nombre" required></label>
+                        <label class="field"><span>Empresa (opcional)</span><input type="text" name="empresa" placeholder="Nombre de la empresa"></label>
+                        <label class="field"><span>Teléfono</span><input type="tel" name="telefono" placeholder="(809) 000-0000" required></label>
+                        <label class="field"><span>Correo</span><input type="email" name="correo" placeholder="nombre@correo.com"></label>
+                        <label class="field field--full"><span>Provincia</span>
+                            <select name="provincia">
+                                <option value="">Seleccione su provincia</option>
+                                <option>Distrito Nacional</option>
+                                <option>Santo Domingo</option>
+                                <option>Santiago</option>
+                                <option>La Altagracia</option>
+                                <option>Puerto Plata</option>
+                                <option>San Cristóbal</option>
+                                <option>La Vega</option>
+                                <option>Otra</option>
+                            </select>
+                        </label>
+                        <label class="field field--full"><span>Mensaje</span><textarea name="mensaje" rows="4" placeholder="Cuéntenos sobre su proyecto"></textarea></label>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--block">Solicitar Cotización</button>
+                    <div id="form-status" class="form-status">✓ Datos recibidos exitosamente. Le contactaremos pronto.</div>
+                </form>
+                <div class="contact-side">
+                    <div class="contact-info">
+                        <div class="contact-info__row">
+                            <a href="https://wa.me/message/S7ORWACDSX3UG1" target="_blank" rel="noopener">
+                                <div class="contact-info__icon"><span class="shape shape--circle"></span></div>
+                                <div><div class="contact-info__label">WhatsApp</div><div class="contact-info__value">Escríbanos ahora</div></div>
+                            </a>
+                        </div>
+                        <div class="contact-info__row">
+                            <a href="tel:+18095697499">
+                                <div class="contact-info__icon"><span class="shape shape--circle"></span></div>
+                                <div><div class="contact-info__label">Teléfono</div><div class="contact-info__value">(809) 569-7499</div></div>
+                            </a>
+                        </div>
+                        <div class="contact-info__row">
+                            <a href="mailto:Servicios@ecovatioenergy.com">
+                                <div class="contact-info__icon"><span class="shape shape--square"></span></div>
+                                <div><div class="contact-info__label">Correo</div><div class="contact-info__value">Servicios@ecovatioenergy.com</div></div>
+                            </a>
+                        </div>
+                        <div class="contact-info__row">
+                            <div class="contact-info__icon"><span class="shape shape--diamond"></span></div>
+                            <div><div class="contact-info__label">Ubicación</div><div class="contact-info__value">Santo Domingo, República Dominicana</div></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="footer__grid">
+            <div>
+                <img class="footer__logo" src="assets/img/logo.png" alt="Ecovatio Energy">
+                <p class="footer__about">Instalación de sistemas de energía solar para hogares, empresas e industrias en República Dominicana.</p>
+            </div>
+            <div>
+                <div class="footer__title">Menú</div>
+                <div class="footer__links">
+                    <a href="#proceso">Proceso</a>
+                    <a href="#servicios">Servicios</a>
+                    <a href="pages/sistemas.html">Sistemas</a>
+                    <a href="#proyectos">Proyectos</a>
+                    <a href="#calculadora">Calculadora</a>
+                    <a href="pages/historia.html">Nuestra Historia</a>
+                </div>
+            </div>
+            <div>
+                <div class="footer__title">Horario</div>
+                <div class="footer__links">
+                    <span>Lun – Vie · 8:00 a.m. – 6:00 p.m.</span>
+                    <span>Sábado · 8:00 a.m. – 1:00 p.m.</span>
+                    <span>Soporte técnico 24/7</span>
+                </div>
+            </div>
+            <div>
+                <div class="footer__title">Redes sociales</div>
+                <div class="footer__links">
+                    <a href="https://www.instagram.com/ecovatioenergy" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61588512834788" target="_blank" rel="noopener">Facebook</a>
+                    <a href="https://wa.me/message/S7ORWACDSX3UG1" target="_blank" rel="noopener">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <span>© 2026 Ecovatio Energy. Todos los derechos reservados.</span>
+            <div class="footer__bottom-links">
+                <a href="#">Términos y condiciones</a>
+                <a href="#">Política de privacidad</a>
+            </div>
+        </div>
     </footer>
+
+    <!-- ================= WIDGETS ================= -->
+    <div class="widgets">
+        <button class="widget-top" id="widget-top" title="Volver arriba" aria-label="Volver arriba">↑</button>
+        <a class="widget-wa" href="https://wa.me/message/S7ORWACDSX3UG1" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M12.016 2.016A10 10 0 0 0 2.253 15.65L.89 20.6l5.06-1.328A9.97 9.97 0 0 0 12.017 22c5.516 0 10-4.484 10-10C22.019 6.485 17.534 2.016 12.017 2.016zm0 18.283a8.28 8.28 0 0 1-4.23-1.155l-.304-.18-3.141.825.84-3.05-.198-.316a8.287 8.287 0 1 1 15.309-4.407c0 4.57-3.715 8.283-8.276 8.283zM16.55 13.82c-.249-.126-1.472-.727-1.701-.81-.228-.084-.395-.126-.56.126-.166.252-.643.81-.788.977-.145.166-.29.186-.54.06-1.611-.806-2.583-1.352-3.6-2.784-.103-.146-.01-.225.114-.35.112-.113.249-.292.373-.437.124-.146.166-.25.248-.415.083-.166.042-.312-.02-.437-.063-.126-.56-1.353-.768-1.852-.202-.485-.407-.42-.56-.427l-.48-.008c-.166 0-.436.063-.664.312-.228.25-.871.85-.871 2.074 0 1.225.892 2.41 1.016 2.576.124.167 1.761 2.686 4.267 3.766 1.488.643 2.062.695 2.846.587.653-.09 1.471-.602 1.678-1.183.208-.58.208-1.08.146-1.183-.063-.105-.228-.168-.477-.294z"/></svg>
+        </a>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
