@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# HTTPS y dominio único
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://ecovatioenergy.com/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://ecovatioenergy.com/$1 [R=301,L]
+
+# Quitar index.html de las URLs
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*)index\.html$ /$1 [R=301,L]
