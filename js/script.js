@@ -34,6 +34,20 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+    /* ---------- Ícono SVG desde el sprite (#i-sol, #i-rayo, #i-bateria...) ---------- */
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var XLINK_NS = 'http://www.w3.org/1999/xlink';
+
+    function makeIcon(id, className) {
+        var svg = document.createElementNS(SVG_NS, 'svg');
+        svg.setAttribute('class', className || 'icon');
+        var use = document.createElementNS(SVG_NS, 'use');
+        use.setAttributeNS(XLINK_NS, 'xlink:href', '#' + id);
+        use.setAttribute('href', '#' + id);
+        svg.appendChild(use);
+        return svg;
+    }
+
     /* ---------- Tema claro / oscuro ---------- */
     var themeBtn = document.getElementById('theme-toggle');
 
@@ -117,86 +131,285 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-       /* ---------- Carrusel de sistemas ---------- */
-    var track = document.getElementById('car-track');
+    /* ---------- Sistemas / productos (desde JSON) + filtro Todos / Paneles / Baterías / Inversores ---------- */
+    var sistemasFilter = document.getElementById('sistemas-filter');
+    var sistemasGrid = document.getElementById('sistemas-grid');
 
-    if (track) {
-        var carousel = track.closest('.carousel');
-        var slideEls = track.children;
-        var slides = slideEls.length;
-        var dotsWrap = document.getElementById('car-dots');
-        var index = 0;
-        var timer = null;
-        var DELAY = 6000;   // ms entre slides (si lo cambias, ajusta el CSS del dot)
-        var angleStep = 360 / slides;
-        var depth = 0;
+    if (sistemasFilter && sistemasGrid) {
+        fetch('/assets/data/sistemas.json')
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                var allBtn = document.createElement('button');
+                allBtn.className = 'filter-btn active';
+                allBtn.dataset.filter = 'todos';
+                allBtn.textContent = 'Todos';
+                sistemasFilter.appendChild(allBtn);
 
-        // Coloca cada slide como una cara del cubo (rotada + empujada hacia afuera),
-        // y recentra el cubo (translateZ negativo) para que la cara activa quede a
-        // z=0 en vez de sobresalir hacia la cámara y verse agrandada.
-        function layoutCube() {
-            depth = Math.round(carousel.offsetWidth / 2 / Math.tan(Math.PI / slides));
-            for (var i = 0; i < slides; i++) {
-                slideEls[i].style.transform = 'rotateY(' + (i * angleStep) + 'deg) translateZ(' + depth + 'px)';
-            }
-            track.style.transform = 'translateZ(-' + depth + 'px) rotateY(-' + (index * angleStep) + 'deg)';
-        }
-        layoutCube();
-        window.addEventListener('resize', layoutCube);
+                data.categorias.forEach(function (cat) {
+                    var btn = document.createElement('button');
+                    btn.className = 'filter-btn';
+                    btn.dataset.filter = cat.slug;
+                    btn.appendChild(makeIcon(cat.icono, 'icon'));
+                    btn.appendChild(document.createTextNode(cat.nombre));
+                    sistemasFilter.appendChild(btn);
 
-        for (var i = 0; i < slides; i++) {
-            var dot = document.createElement('button');
-            dot.className = 'carousel__dot';
-            dot.setAttribute('aria-label', 'Ir al sistema ' + (i + 1));
-            dot.dataset.index = i;
-            dot.addEventListener('click', function () { goTo(Number(this.dataset.index), true); });
-            dotsWrap.appendChild(dot);
-        }
+                    cat.productos.forEach(function (p) {
+                        var card = document.createElement('div');
+                        card.className = 'product-card reveal';
+                        card.dataset.category = cat.slug;
 
-        function goTo(n, manual) {
-            index = (n + slides) % slides;
-            track.style.transform = 'translateZ(-' + depth + 'px) rotateY(-' + (index * angleStep) + 'deg)';
-            dotsWrap.querySelectorAll('.carousel__dot').forEach(function (d, di) {
-                d.classList.toggle('active', di === index);
+                        var imgWrap = document.createElement('div');
+                        imgWrap.className = 'product-card__img';
+                        var img = document.createElement('img');
+                        img.src = p.img;
+                        img.alt = p.alt || p.titulo;
+                        img.loading = 'lazy';
+                        img.addEventListener('error', function () {
+                            var badge = document.createElement('div');
+                            badge.className = 'product-card__badge';
+                            badge.textContent = p.tag;
+                            imgWrap.replaceChild(badge, img);
+                        });
+                        imgWrap.appendChild(img);
+
+                        var body = document.createElement('div');
+                        body.className = 'product-card__body';
+
+                        var tag = document.createElement('div');
+                        tag.className = 'product-card__tag';
+                        tag.textContent = p.tag;
+
+                        var title = document.createElement('h3');
+                        title.className = 'product-card__title';
+                        title.textContent = p.titulo;
+
+                        var desc = document.createElement('p');
+                        desc.className = 'product-card__desc';
+                        desc.textContent = p.descripcion;
+
+                        var meta = document.createElement('div');
+                        meta.className = 'product-card__meta';
+
+                        var spec = document.createElement('span');
+                        spec.className = 'product-card__spec';
+                        spec.textContent = p.spec;
+
+                        var link = document.createElement('a');
+                        link.className = 'product-card__link';
+                        link.href = '#contacto';
+                        link.textContent = 'Solicitar cotización →';
+
+                        meta.appendChild(spec);
+                        meta.appendChild(link);
+                        body.appendChild(tag);
+                        body.appendChild(title);
+                        body.appendChild(desc);
+                        body.appendChild(meta);
+
+                        card.appendChild(imgWrap);
+                        card.appendChild(body);
+                        sistemasGrid.appendChild(card);
+                    });
+                });
+
+                var productCards = sistemasGrid.querySelectorAll('.product-card');
+
+                if (!('IntersectionObserver' in window)) {
+                    productCards.forEach(function (el) { el.classList.add('in'); });
+                } else {
+                    var sistemasObserver = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('in');
+                                sistemasObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.12 });
+                    productCards.forEach(function (el) { sistemasObserver.observe(el); });
+                }
+
+                /* ---------- Paginación: solo 4 cards visibles a la vez dentro del filtro activo ---------- */
+                var PAGE_SIZE = 4;
+                var pager = document.getElementById('sistemas-pager');
+                var prevBtn = document.getElementById('sistemas-prev');
+                var nextBtn = document.getElementById('sistemas-next');
+                var pageStatus = document.getElementById('sistemas-page-status');
+                var currentMatches = Array.prototype.slice.call(productCards);
+                var currentPage = 0;
+
+                function renderPage() {
+                    var totalPages = Math.max(1, Math.ceil(currentMatches.length / PAGE_SIZE));
+                    currentPage = Math.min(currentPage, totalPages - 1);
+                    var start = currentPage * PAGE_SIZE;
+                    var end = start + PAGE_SIZE;
+
+                    productCards.forEach(function (card) { card.classList.add('is-hidden'); });
+                    currentMatches.slice(start, end).forEach(function (card) { card.classList.remove('is-hidden'); });
+
+                    pageStatus.textContent = (currentPage + 1) + ' / ' + totalPages;
+                    prevBtn.disabled = currentPage === 0;
+                    nextBtn.disabled = currentPage === totalPages - 1;
+                    pager.hidden = totalPages <= 1;
+                }
+
+                prevBtn.addEventListener('click', function () { currentPage--; renderPage(); });
+                nextBtn.addEventListener('click', function () { currentPage++; renderPage(); });
+
+                sistemasFilter.querySelectorAll('.filter-btn').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        sistemasFilter.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+                        btn.classList.add('active');
+
+                        var filter = btn.dataset.filter;
+                        currentMatches = Array.prototype.filter.call(productCards, function (card) {
+                            return filter === 'todos' || card.dataset.category === filter;
+                        });
+                        currentPage = 0;
+                        renderPage();
+                    });
+                });
+
+                renderPage();
+            })
+            .catch(function () {
+                sistemasGrid.innerHTML = '<p style="color:var(--mut)">No se pudieron cargar los sistemas en este momento.</p>';
             });
-            if (manual) restart();
-        }
+    }
 
-        function play() {
-            if (!timer && slides > 1) {
-                timer = setInterval(function () { goTo(index + 1); }, DELAY);
-            }
-        }
-        function stop() { clearInterval(timer); timer = null; }
-        function restart() { stop(); play(); }
+    /* ---------- Cinta de marcas con animación infinita (al pie de "Sistemas") ---------- */
+    var brandStripTrack = document.getElementById('brand-strip-track');
 
-        document.getElementById('car-prev').addEventListener('click', function () { goTo(index - 1, true); });
-        document.getElementById('car-next').addEventListener('click', function () { goTo(index + 1, true); });
+    if (brandStripTrack) {
+        fetch('/assets/data/marcas.json')
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                var seen = {};
+                var brands = [];
+                data.categorias.forEach(function (cat) {
+                    cat.marcas.forEach(function (marca) {
+                        if (seen[marca.nombre]) return;
+                        seen[marca.nombre] = true;
+                        brands.push(marca);
+                    });
+                });
 
-        // pausa con el mouse encima y cuando la pestaña no está visible
-        carousel.addEventListener('mouseenter', stop);
-        carousel.addEventListener('mouseleave', play);
-        document.addEventListener('visibilitychange', function () {
-            if (document.hidden) { stop(); } else { play(); }
-        });
+                function buildItem(marca) {
+                    var item = document.createElement('div');
+                    item.className = 'brand-strip__item';
 
-        // swipe en móvil
-        var touchX = null;
-        carousel.addEventListener('touchstart', function (e) {
-            touchX = e.touches[0].clientX;
-            stop();
-        }, { passive: true });
+                    var img = document.createElement('img');
+                    img.src = marca.img;
+                    img.alt = marca.nombre;
+                    // sin lazy: la cinta se mueve sola y el usuario puede no "acercarse" nunca
+                    // en scroll a un logo dado, dejándolo en ancho 0 (imagen rota sin cargar)
+                    img.addEventListener('error', function () {
+                        var badge = document.createElement('div');
+                        badge.className = 'brand-strip__badge';
+                        badge.textContent = marca.nombre;
+                        item.replaceChild(badge, img);
+                    });
+                    item.appendChild(img);
+                    return item;
+                }
 
-        carousel.addEventListener('touchend', function (e) {
-            if (touchX === null) return;
-            var dx = e.changedTouches[0].clientX - touchX;
-            if (Math.abs(dx) > 45) { goTo(index + (dx < 0 ? 1 : -1), true); } else { play(); }
-            touchX = null;
-        });
+                // la lista se duplica para que translateX(-50%) sea un loop continuo sin salto visible
+                brands.concat(brands).forEach(function (marca) {
+                    brandStripTrack.appendChild(buildItem(marca));
+                });
+            })
+            .catch(function () {
+                var wrap = brandStripTrack.closest('.brand-strip-wrap');
+                if (wrap) wrap.style.display = 'none';
+            });
+    }
 
-        goTo(0);
+    /* ---------- Marcas y fabricantes (página /pages/marcas.html) ---------- */
+    var marcasWrap = document.getElementById('marcas-wrap');
 
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) play();
+    if (marcasWrap) {
+        fetch('/assets/data/marcas.json')
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                data.categorias.forEach(function (cat) {
+                    var section = document.createElement('div');
+                    section.className = 'brand-category reveal';
+                    section.id = cat.slug;
+
+                    var head = document.createElement('div');
+                    head.className = 'brand-category__head';
+
+                    var icon = document.createElement('span');
+                    icon.className = 'brand-category__icon';
+                    icon.appendChild(makeIcon(cat.icono, 'icon'));
+
+                    var title = document.createElement('h2');
+                    title.className = 'brand-category__title';
+                    title.textContent = cat.nombre;
+
+                    head.appendChild(icon);
+                    head.appendChild(title);
+                    section.appendChild(head);
+
+                    var grid = document.createElement('div');
+                    grid.className = 'brand-grid';
+
+                    cat.marcas.forEach(function (marca) {
+                        var card = document.createElement('a');
+                        card.className = 'brand-card';
+                        card.href = marca.url;
+                        card.target = '_blank';
+                        card.rel = 'noopener';
+
+                        var logoWrap = document.createElement('div');
+                        logoWrap.className = 'brand-card__logo';
+
+                        var img = document.createElement('img');
+                        img.src = marca.img;
+                        img.alt = marca.nombre;
+                        img.loading = 'lazy';
+                        img.addEventListener('error', function () {
+                            var badge = document.createElement('div');
+                            badge.className = 'brand-card__badge';
+                            badge.textContent = marca.nombre.split(' ').map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
+                            logoWrap.replaceChild(badge, img);
+                        });
+                        logoWrap.appendChild(img);
+
+                        var name = document.createElement('div');
+                        name.className = 'brand-card__name';
+                        name.textContent = marca.nombre;
+
+                        var link = document.createElement('div');
+                        link.className = 'brand-card__link';
+                        link.textContent = 'Visitar sitio →';
+
+                        card.appendChild(logoWrap);
+                        card.appendChild(name);
+                        card.appendChild(link);
+                        grid.appendChild(card);
+                    });
+
+                    section.appendChild(grid);
+                    marcasWrap.appendChild(section);
+                });
+
+                if (!('IntersectionObserver' in window)) {
+                    marcasWrap.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+                } else {
+                    var marcasObserver = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('in');
+                                marcasObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    marcasWrap.querySelectorAll('.reveal').forEach(function (el) { marcasObserver.observe(el); });
+                }
+            })
+            .catch(function () {
+                marcasWrap.innerHTML = '<p style="color:var(--mut)">No se pudieron cargar las marcas en este momento.</p>';
+            });
     }
 
     /* ---------- FAQ (acordeón) ---------- */

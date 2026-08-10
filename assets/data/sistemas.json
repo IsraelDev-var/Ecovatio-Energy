@@ -1,0 +1,155 @@
+{
+  "categorias": [
+    {
+      "slug": "paneles",
+      "nombre": "Paneles Solares",
+      "icono": "i-sol",
+      "productos": [
+        {
+          "tag": "Panel solar monofacial Jinko",
+          "titulo": "Panel Solar Jinko TOPCON",
+          "descripcion": "Tecnología TOPCON de alta eficiencia: células N-Type con un 23,2% de eficiencia para una potencia superior.",
+          "spec": "Paneles, Energía limpia",
+          "img": "/assets/img/paneles/jinko-panel-sin-fondo.png",
+          "alt": "Panel solar Jinko"
+        },
+        {
+          "tag": "Longi Solar",
+          "titulo": "Paneles Solares Longi Solar",
+          "descripcion": "Paneles monocristalinos de alta eficiencia respaldados por la garantía de fábrica de Longi Solar, uno de los fabricantes líderes a nivel mundial en tecnología fotovoltaica.",
+          "spec": "Paneles · Alta eficiencia",
+          "img": "/assets/img/paneles/login-paneles.png",
+          "alt": "Panel solar Longi Solar"
+        },
+        {
+          "tag": "JA Solar",
+          "titulo": "Paneles Solares JA Solar",
+          "descripcion": "Paneles solares de alto rendimiento y durabilidad, fabricados por JA Solar, con presencia y certificaciones internacionales.",
+          "spec": "Paneles · Alto rendimiento",
+          "img": "/assets/img/paneles/Ja-Solar-Jamt.avif",
+          "alt": "Panel solar JA Solar"
+        }
+      ]
+    },
+    {
+      "slug": "baterias",
+      "nombre": "Baterías",
+      "icono": "i-bateria",
+      "productos": [
+        {
+          "tag": "16K0 LV · 16 kWh",
+          "titulo": "Batería WeCo de bajo voltaje",
+          "descripcion": "Sistema de almacenamiento LiFePO₄ de alta capacidad para energía de respaldo confiable e integración perfecta en instalaciones híbridas.",
+          "spec": "Litio LiFePO4 de larga vida",
+          "img": "/assets/img/baterias/Weco_Residenziali_16K0-LV-1.png",
+          "alt": "Batería WeCo 16K0 LV"
+        },
+        {
+          "tag": "Serie XTS · 8 / 12 kW",
+          "titulo": "Batería WeCo de alto rendimiento",
+          "descripcion": "Rendimiento de fase dividida para aplicaciones de 120/240V con mayor potencia, flexibilidad y gestión energética avanzada.",
+          "spec": "Control y respaldo sin interrupciones",
+          "img": "/assets/img/baterias/Weco_Residenziali_XTS.png",
+          "alt": "Batería WeCo Serie XTS"
+        }
+      ]
+    },
+    {
+      "slug": "inversores",
+      "nombre": "Inversores",
+      "icono": "i-rayo",
+      "productos": [
+        {
+          "tag": "5K3 EVO · 5,22 kWh",
+          "titulo": "Inversor WeCo de doble voltaje",
+          "descripcion": "Solución LiFePO₄ de alta eficiencia para aplicaciones residenciales y comerciales, con integración híbrida avanzada e IP66.",
+          "spec": "Rendimiento y control continuo",
+          "img": "/assets/img/inversores/Weco_Residenziali_5K3-EVO-1.png",
+          "alt": "Inversor WeCo 5K3 EVO"
+        },
+        {
+          "tag": "Victron Energy",
+          "titulo": "Inversores Victron Energy",
+          "descripcion": "Inversores y cargadores de referencia mundial en calidad y confiabilidad, con onda senoidal pura y monitoreo avanzado del sistema.",
+          "spec": "Inversores · Calidad premium",
+          "img": "/assets/img/brands/victron-energy.png",
+          "alt": "Logo Victron Energy"
+        },
+        {
+          "tag": "Deye",
+          "titulo": "Inversores Deye",
+          "descripcion": "Inversores híbridos de alto rendimiento con soporte para baterías de litio y gestión inteligente de la energía solar.",
+          "spec": "Inversores · Híbridos",
+          "img": "/assets/img/inversores/deye.jpg",
+          "alt": "Logo Deye"
+        },
+        {
+          "tag": "Solis (Ginlong Technologies)",
+          "titulo": "Inversores Solis",
+          "descripcion": "Inversores solares de Ginlong Technologies, con más de una década de innovación y presencia en más de 100 países.",
+          "spec": "Inversores · Presencia global",
+          "img": "/assets/img/brands/solis.png",
+          "alt": "Logo Solis"
+        }
+      ]
+    },
+    {
+      "slug": "estructuras",
+      "nombre": "Estructuras de Montaje",
+      "icono": "i-estructura",
+      "productos": [
+        {
+          "tag": "Tejado Inclinado",
+          "titulo": "Estructuras de Montaje Schletter",
+          "descripcion": "Sistemas de montaje construidos para durar: tejado inclinado, tejado plano, fachada y estructuras de suelo, adaptados a cada tipo de instalación.",
+          "spec": "Estructuras · Construidas para durar",
+          "img": "/assets/img/Schletter/Tejado-inclinado.webp",
+          "alt": "Estructura Schletter para tejado inclinado"
+        },
+        {
+          "tag": "Schletter",
+          "titulo": "Tejado Plano.",
+          "descripcion": "Sistemas de montaje construidos para durar: tejado inclinado, tejado plano, fachada y estructuras de suelo, adaptados a cada tipo de instalación.",
+          "spec": "Estructuras · Construidas para durar",
+          "img": "/assets/img/Schletter/Tejado-plano.webp",
+          "alt": "Estructura Schletter para tejado plano"
+        },
+        {
+          "tag": "Schletter",
+          "titulo": "Fachada",
+          "descripcion": "Sistemas de montaje construidos para durar: tejado inclinado, tejado plano, fachada y estructuras de suelo, adaptados a cada tipo de instalación.",
+          "spec": "Estructuras · Construidas para durar",
+          "img": "/assets/img/Schletter/Fachada.webp",
+          "alt": "Estructura Schletter para fachada"
+        },
+        {
+          "tag": "Schletter",
+          "titulo": "Inclinacion Fija.",
+          "descripcion": "Sistemas de montaje construidos para durar: tejado inclinado, tejado plano, fachada y estructuras de suelo, adaptados a cada tipo de instalación.",
+          "spec": "Estructuras · Construidas para durar",
+          "img": "/assets/img/Schletter/Inclinacion-fija.webp",
+          "alt": "Estructura Schletter de inclinación fija"
+        },
+        {
+          "tag": "Schletter",
+          "titulo": "Seguimiento Solar.",
+          "descripcion": "Sistemas de montaje construidos para durar: tejado inclinado, tejado plano, fachada y estructuras de suelo, adaptados a cada tipo de instalación.",
+          "spec": "Estructuras · Construidas para durar",
+          "img": "/assets/img/Schletter/Seguimiento-solar.webp",
+          "alt": "Estructura Schletter con seguimiento solar"
+        },
+        {
+          "tag": "Schletter",
+          "titulo": "Agrovoltaico.",
+          "descripcion": "Sistemas de montaje construidos para durar: tejado inclinado, tejado plano, fachada y estructuras de suelo, adaptados a cada tipo de instalación.",
+          "spec": "Estructuras · Construidas para durar",
+          "img": "/assets/img/Schletter/Agrovoltaico.webp",
+          "alt": "Estructura Schletter agrovoltaica"
+        }
+        
+
+        
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "categorias": [
+    {
+      "slug": "paneles",
+      "nombre": "Paneles Solares",
+      "icono": "i-sol",
+      "marcas": [
+        {
+          "nombre": "Longi Solar",
+          "url": "https://www.longi.com/es/",
+          "img": "/assets/img/brands/longi.png"
+        },
+        {
+          "nombre": "JA Solar",
+          "url": "https://www.jasolar.com/",
+          "img": "/assets/img/brands/ja-solar.png"
+        },
+        {
+          "nombre": "Jinko Solar",
+          "url": "https://www.jinkosolar.com/",
+          "img": "/assets/img/brands/jinko-solar.png"
+        }
+      ]
+    },
+    {
+      "slug": "inversores",
+      "nombre": "Inversores Solares",
+      "icono": "i-rayo",
+      "marcas": [
+        {
+          "nombre": "Victron Energy",
+          "url": "https://www.victronenergy.com.es/",
+          "img": "/assets/img/brands/victron-energy.png"
+        },
+        {
+          "nombre": "WeCo Inversores",
+          "url": "https://wecobatteries.com/",
+          "img": "/assets/img/brands/weco.png"
+        },
+        {
+          "nombre": "Deye",
+          "url": "https://www.deyeinverter.com/",
+          "img": "/assets/img/brands/deye.svg"
+        },
+        {
+          "nombre": "Solis (Ginlong Technologies)",
+          "url": "https://www.ginlong.com/",
+          "img": "/assets/img/brands/solis.png"
+        }
+      ]
+    },
+    {
+      "slug": "baterias",
+      "nombre": "Almacenamiento (Baterías)",
+      "icono": "i-bateria",
+      "marcas": [
+        {
+          "nombre": "Baterías WeCo",
+          "url": "https://wecobatteries.com/",
+          "img": "/assets/img/brands/weco.png"
+        }
+      ]
+    },
+    {
+      "slug": "proteccion",
+      "nombre": "Protección Eléctrica y Cableado",
+      "icono": "i-escudo",
+      "marcas": [
+        {
+          "nombre": "Schneider Electric",
+          "url": "https://www.se.com/",
+          "img": "/assets/img/brands/schneider-electric.png"
+        },
+        {
+          "nombre": "Suntree",
+          "url": "https://www.suntree-electric.com/",
+          "img": "/assets/img/brands/suntree.webp"
+        },
+        {
+          "nombre": "Tripp Lite",
+          "url": "https://tripplite.eaton.com/",
+          "img": "/assets/img/brands/tripp-lite.png"
+        },
+        {
+          "nombre": "ABB",
+          "url": "https://global.abb/group/es",
+          "img": "/assets/img/brands/abb.svg"
+        },
+        {
+          "nombre": "Eaton",
+          "url": "https://www.eaton.com/",
+          "img": "/assets/img/brands/eaton.png"
+        },
+        {
+          "nombre": "Top Cable",
+          "url": "https://www.topcable.com/",
+          "img": "/assets/img/brands/top-cable.png"
+        }
+      ]
+    },
+    {
+      "slug": "estructuras",
+      "nombre": "Estructuras de Montaje",
+      "icono": "i-estructura",
+      "marcas": [
+        {
+          "nombre": "Schletter",
+          "url": "https://schletter-group.com/",
+          "img": "/assets/img/brands/schletter.svg"
+        }
+      ]
+    }
+  ]
+}
