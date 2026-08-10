@@ -276,6 +276,94 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
+    /* ---------- Proyectos realizados (desde JSON) ---------- */
+    var proyectosGrid = document.getElementById('proyectos-grid');
+
+    if (proyectosGrid) {
+        fetch('/assets/data/proyectos.json')
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                data.proyectos.forEach(function (p) {
+                    var card = document.createElement('div');
+                    card.className = 'project-card reveal';
+
+                    var img = document.createElement('img');
+                    img.src = p.img;
+                    img.alt = p.alt || p.ciudad;
+                    img.loading = 'lazy';
+
+                    var shade = document.createElement('div');
+                    shade.className = 'project-card__shade';
+
+                    var body = document.createElement('div');
+                    body.className = 'project-card__body';
+
+                    var city = document.createElement('div');
+                    city.className = 'project-card__city';
+                    city.textContent = p.ciudad;
+
+                    var meta = document.createElement('div');
+                    meta.className = 'project-card__meta';
+                    meta.textContent = p.categoria + ' · ' + p.paneles + ' paneles · ' + p.kwp + ' kWp';
+
+                    body.appendChild(city);
+                    body.appendChild(meta);
+                    card.appendChild(img);
+                    card.appendChild(shade);
+                    card.appendChild(body);
+                    proyectosGrid.appendChild(card);
+                });
+
+                var projectCards = proyectosGrid.querySelectorAll('.project-card');
+
+                if (!('IntersectionObserver' in window)) {
+                    projectCards.forEach(function (el) { el.classList.add('in'); });
+                } else {
+                    var proyectosObserver = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('in');
+                                proyectosObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.12 });
+                    projectCards.forEach(function (el) { proyectosObserver.observe(el); });
+                }
+
+                /* ---------- Paginación: solo 6 proyectos visibles a la vez ---------- */
+                var PROYECTOS_PAGE_SIZE = 6;
+                var proyectosPager = document.getElementById('proyectos-pager');
+                var proyectosPrev = document.getElementById('proyectos-prev');
+                var proyectosNext = document.getElementById('proyectos-next');
+                var proyectosPageStatus = document.getElementById('proyectos-page-status');
+                var proyectosPage = 0;
+
+                function renderProyectosPage() {
+                    var totalPages = Math.max(1, Math.ceil(projectCards.length / PROYECTOS_PAGE_SIZE));
+                    proyectosPage = Math.min(proyectosPage, totalPages - 1);
+                    var start = proyectosPage * PROYECTOS_PAGE_SIZE;
+                    var end = start + PROYECTOS_PAGE_SIZE;
+
+                    projectCards.forEach(function (card, i) {
+                        card.classList.toggle('is-hidden', i < start || i >= end);
+                    });
+
+                    proyectosPageStatus.textContent = (proyectosPage + 1) + ' / ' + totalPages;
+                    proyectosPrev.disabled = proyectosPage === 0;
+                    proyectosNext.disabled = proyectosPage === totalPages - 1;
+                    proyectosPager.hidden = totalPages <= 1;
+                }
+
+                proyectosPrev.addEventListener('click', function () { proyectosPage--; renderProyectosPage(); });
+                proyectosNext.addEventListener('click', function () { proyectosPage++; renderProyectosPage(); });
+
+                renderProyectosPage();
+            })
+            .catch(function () {
+                proyectosGrid.innerHTML = '<p style="color:var(--mut)">No se pudieron cargar los proyectos en este momento.</p>';
+            });
+    }
+
     /* ---------- Cinta de marcas con animación infinita (al pie de "Sistemas") ---------- */
     var brandStripTrack = document.getElementById('brand-strip-track');
 

@@ -1,0 +1,52 @@
+{
+  "proyectos": [
+    {
+      "ciudad": "Punta Cana",
+      "categoria": "Residencial",
+      "paneles": 9,
+      "kwp": "5.6",
+      "img": "/assets/img/PuntaCana-5.6kwp.jpeg",
+      "alt": "Proyecto residencial en Punta Cana"
+    },
+    {
+      "ciudad": "Santo Domingo Oeste",
+      "categoria": "Residencial",
+      "paneles": 50,
+      "kwp": "40",
+      "img": "/assets/img/40.kwp.jpeg",
+      "alt": "Proyecto residencial en Santo Domingo Oeste"
+    },
+    {
+      "ciudad": "Punta Cana",
+      "categoria": "Residencial",
+      "paneles": 24,
+      "kwp": "13.2",
+      "img": "/assets/img/hero-bg.png",
+      "alt": "Villa con paneles en Punta Cana"
+    },
+    {
+      "ciudad": "San Juan",
+      "categoria": "Agrícola",
+      "paneles": 96,
+      "kwp": "52.8",
+      "img": "/assets/img/farm.png",
+      "alt": "Proyecto agrícola en San Juan"
+    },
+    {
+      "ciudad": "Ocoa",
+      "categoria": "Comercial",
+      "paneles": 45,
+      "kwp": "26.4",
+      "img": "/assets/img/ocoa1.jpg",
+      "alt": "Instalación comercial en Ocoa"
+    },
+    {
+      "ciudad": "Santo Domingo este",
+      "categoria": "Residencial",
+      "paneles": 9,
+      "kwp": "4.8",
+      "img": "/assets/img/santoDeste.png",
+      "alt": "Residencia en Santo Domingo este"
+    }
+  ]
+}
