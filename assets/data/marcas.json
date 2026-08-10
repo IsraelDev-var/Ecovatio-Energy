@@ -30,22 +30,23 @@
         {
           "nombre": "Victron Energy",
           "url": "https://www.victronenergy.com.es/",
-          "img": "/assets/img/brands/victron-energy.png"
+          "img": "/assets/img/brands/victron-energy.svg"
         },
-        {
-          "nombre": "WeCo Inversores",
-          "url": "https://wecobatteries.com/",
-          "img": "/assets/img/brands/weco.png"
-        },
+        
         {
           "nombre": "Deye",
           "url": "https://www.deyeinverter.com/",
           "img": "/assets/img/brands/deye.svg"
         },
         {
-          "nombre": "Solis (Ginlong Technologies)",
+          "nombre": "Solis ",
           "url": "https://www.ginlong.com/",
-          "img": "/assets/img/brands/solis.png"
+          "img": "/assets/img/brands/solislogo.webp"
+        },
+        {
+          "nombre": "Huawei",
+          "url": "https://www.huawei.com/",
+          "img": "/assets/img/brands/huawei_logo.png"
         }
       ]
     },
@@ -58,6 +59,11 @@
           "nombre": "Baterías WeCo",
           "url": "https://wecobatteries.com/",
           "img": "/assets/img/brands/weco.png"
+        },
+        {
+          "nombre": "Pytes ESS",
+          "url": "https://es.pytesess.com/",
+          "img": "/assets/img/brands/pytesLogo.png"
         }
       ]
     },

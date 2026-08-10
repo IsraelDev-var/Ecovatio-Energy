@@ -45,13 +45,14 @@
           "alt": "Batería WeCo 16K0 LV"
         },
         {
-          "tag": "Serie XTS · 8 / 12 kW",
-          "titulo": "Batería WeCo de alto rendimiento",
-          "descripcion": "Rendimiento de fase dividida para aplicaciones de 120/240V con mayor potencia, flexibilidad y gestión energética avanzada.",
-          "spec": "Control y respaldo sin interrupciones",
-          "img": "/assets/img/baterias/Weco_Residenziali_XTS.png",
-          "alt": "Batería WeCo Serie XTS"
+          "tag": "Pytes ESS",
+          "titulo": "Batería Pytes ESS",
+          "descripcion": "Sistema de almacenamiento LiFePO₄ de alta capacidad para energía de respaldo confiable e integración perfecta en instalaciones híbridas.",
+          "spec": "Litio LiFePO4 de larga vida",
+          "img": "/assets/img/baterias/pytes-bateria.png",
+          "alt": "Batería Pytes ESS"
         }
+        
       ]
     },
     {
@@ -59,6 +60,14 @@
       "nombre": "Inversores",
       "icono": "i-rayo",
       "productos": [
+        {
+          "tag": "Ajustar",
+          "titulo": "Ajustar",
+          "descripcion": "Rendimiento de fase dividida para aplicaciones de 120/240V con mayor potencia, flexibilidad y gestión energética avanzada.",
+          "spec": "Control y respaldo sin interrupciones",
+          "img": "/assets/img/baterias/Weco_Residenziali_XTS.png",
+          "alt": "Batería WeCo Serie XTS"
+        },
         {
           "tag": "5K3 EVO · 5,22 kWh",
           "titulo": "Inversor WeCo de doble voltaje",
@@ -72,7 +81,7 @@
           "titulo": "Inversores Victron Energy",
           "descripcion": "Inversores y cargadores de referencia mundial en calidad y confiabilidad, con onda senoidal pura y monitoreo avanzado del sistema.",
           "spec": "Inversores · Calidad premium",
-          "img": "/assets/img/brands/victron-energy.png",
+          "img": "/assets/img/brands/victron-energy.svg",
           "alt": "Logo Victron Energy"
         },
         {
@@ -84,12 +93,20 @@
           "alt": "Logo Deye"
         },
         {
-          "tag": "Solis (Ginlong Technologies)",
+          "tag": "S5-GC(50-60)K-LV",
           "titulo": "Inversores Solis",
-          "descripcion": "Inversores solares de Ginlong Technologies, con más de una década de innovación y presencia en más de 100 países.",
+          "descripcion": "El S5-GC(50-60)K-LV es una nueva generación de productos trifásicos de 220v. Es uno de los inversores trifásicos en cadena de baja tensión más potentes del mundo. ",
           "spec": "Inversores · Presencia global",
-          "img": "/assets/img/brands/solis.png",
+          "img": "/assets/img/inversores/inversorsoli.webp",
           "alt": "Logo Solis"
+        },
+        {
+          "tag": "SUN2000-5/6/8/10/12K-MAP0",
+          "titulo": "Inversores Huawei",
+          "descripcion": "El potente inversor mantiene activos más electrodomésticos con mayor autosuficiencia con energía verde y facturas de electricidad más bajas. El nuevo inversor MAP0 admite sistema de almacenamiento de energía. Pásate a la energía verde con menos inversores.",
+          "spec": "Inversores · Presencia global",
+          "img": "/assets/img/inversores/invHuawaei.png",
+          "alt": "Logo Huawei"
         }
       ]
     },
@@ -116,14 +133,6 @@
         },
         {
           "tag": "Schletter",
-          "titulo": "Fachada",
-          "descripcion": "Sistemas de montaje construidos para durar: tejado inclinado, tejado plano, fachada y estructuras de suelo, adaptados a cada tipo de instalación.",
-          "spec": "Estructuras · Construidas para durar",
-          "img": "/assets/img/Schletter/Fachada.webp",
-          "alt": "Estructura Schletter para fachada"
-        },
-        {
-          "tag": "Schletter",
           "titulo": "Inclinacion Fija.",
           "descripcion": "Sistemas de montaje construidos para durar: tejado inclinado, tejado plano, fachada y estructuras de suelo, adaptados a cada tipo de instalación.",
           "spec": "Estructuras · Construidas para durar",
@@ -146,8 +155,6 @@
           "img": "/assets/img/Schletter/Agrovoltaico.webp",
           "alt": "Estructura Schletter agrovoltaica"
         }
-        
-
         
       ]
     }
